@@ -8,19 +8,14 @@ module.exports = {
         filename: "js/app.js"
     },
     module: {
-        noParse: /\.elm$/,
         loaders: [{
             test: /\.js$/,
             exclude: /node_modules/,
             loader: ["babel"],
             include: __dirname,
             query: {
-                presets: ["es2015"]
+                presets: ["es2015", "react"]
             }
-        }, {
-            test: /\.elm$/,
-            exclude: [/elm-stuff/, /node_modules/],
-            loader: 'elm-webpack'
         }, {
             test: /\.css$/,
             loader: ExtractTextPlugin.extract("style", "css")
@@ -38,7 +33,7 @@ module.exports = {
             phoenix_html:
             __dirname + "/deps/phoenix_html/web/static/js/phoenix_html.js",
             phoenix:
-            __dirname + "./deps/phoenix/web/static/js/phoenix.js"
+            __dirname + "/deps/phoenix/web/static/js/phoenix.js"
         }
     },
     plugins: [

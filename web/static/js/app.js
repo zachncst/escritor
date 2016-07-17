@@ -12,7 +12,7 @@
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
 import "phoenix_html"
-import { Socket } from "phoenix";
+import { Socket } from "phoenix"
 
 
 // Import local files
@@ -21,3 +21,12 @@ import { Socket } from "phoenix";
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+
+import React from "react"
+import ReactDOM from "react-dom"
+import HelloWorld from "./components/main.react.js"
+
+var App = React.createFactory(HelloWorld);
+
+ReactDOM.render(App(window.APP_PROPS), document.getElementById('content'))
+

@@ -11,7 +11,10 @@ config :escritor, Escritor.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [npm: ["start"]]
+  watchers:  [
+    {"node", ["node_modules/webpack/bin/webpack.js", "--watch-stdin", "--progress", "--colors"]},
+    {"node", ["node_modules/webpack/bin/webpack.js", "--watch-stdin", "--progress", "--colors", "--config", "webpack.server.config.js"]},
+  ]
 
 # Watch static and templates for browser reloading.
 config :escritor, Escritor.Endpoint,
@@ -40,3 +43,8 @@ config :escritor, Escritor.Repo,
   database: "escritor_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :escritor, Escritor.ReactIo,
+  watch_files: [
+    Path.join([__DIR__, "../priv/server/js/component.js"])
+  ]
